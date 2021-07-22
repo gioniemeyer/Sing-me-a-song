@@ -11,4 +11,6 @@ app.post("/recommendations", songController.postSong);
 
 app.post("/recommendations/:id/upvote", voteController.upVote);
 
+app.post("/recommendations/:id/downvote", voteController.downVote);
+
 export default app;

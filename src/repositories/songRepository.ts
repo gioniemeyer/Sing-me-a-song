@@ -20,3 +20,10 @@ export async function findSong(id:number) {
     `,[id])
     return response.rows[0];
 }
+
+
+export async function deleteSong(id:number) {
+    await connection.query(`
+        DELETE FROM songs WHERE id = $1
+    `, [id]);
+}
