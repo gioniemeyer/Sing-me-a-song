@@ -1,8 +1,8 @@
 import supertest from "supertest";
-import app from "../../src/app";
-import connection from "../../src/database";
+import app from "../../../src/app";
+import connection from "../../../src/database";
 
-import {Body} from "./bodies" 
+import {Body} from "../bodies" 
 
 beforeEach(async() => {
     await connection.query(`DELETE FROM songs`);
