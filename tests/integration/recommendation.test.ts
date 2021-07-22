@@ -2,14 +2,8 @@ import supertest from "supertest";
 import app from "../../src/app";
 import connection from "../../src/database";
 
-const body = {
-  name: "Luísa Sonza - Penhasco",
-  link: "https://www.youtube.com/watch?v=HsCUsBVlmgQ"
-}
-const wrongBody = {
-  name: "Luísa Sonza - Penhasco",
-  link: "https://www.globo.com/"
-}
+import {Body} from "./bodies" 
+import {WrongBody} from "./bodies" 
 
 beforeEach(async () => {
   await connection.query("DELETE FROM songs");
@@ -21,18 +15,18 @@ afterAll(() => {
 
 describe("POST /recommendation", () => {
   it("should answer with status 201 when added recommendation", async () => {
-    const response = await supertest(app).post("/recommendations").send(body);
+    const response = await supertest(app).post("/recommendations").send(Body);
     expect(response.status).toBe(201);
   });
 
   it("should answer with status 403 when incorrect body", async () => {
-    const response = await supertest(app).post("/recommendations").send(wrongBody);
+    const response = await supertest(app).post("/recommendations").send(WrongBody);
     expect(response.status).toBe(403);
   });
 
   it("should answer with status 409 when link already exists", async () => {
-    await supertest(app).post("/recommendations").send(body);
-    const response = await supertest(app).post("/recommendations").send(body);
+    await supertest(app).post("/recommendations").send(Body);
+    const response = await supertest(app).post("/recommendations").send(Body);
     expect(response.status).toBe(409);
   });
 });
