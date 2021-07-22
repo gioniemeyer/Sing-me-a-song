@@ -6,6 +6,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/test", songController.postSong);
+app.post("/recommendations", songController.postSong);
 
 export default app;
