@@ -1,5 +1,7 @@
 import {Request, Response} from 'express';
 
+import connection from '../database';
+
 export async function postSong(req: Request, res: Response) {
     try {
         return res.sendStatus(201);
