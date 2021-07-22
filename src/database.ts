@@ -1,3 +1,4 @@
+import "./setup";
 import pg from 'pg';
 
 const databaseConfig = {
