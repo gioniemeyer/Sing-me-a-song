@@ -11,6 +11,12 @@ export async function createSong(name:string, link:string) {
     await connection.query(`
         INSERT INTO songs (name, "youtubeLink")
         VALUES ($1, $2)    
-    `, [name, link]);
-    
+    `, [name, link]);   
+}
+
+export async function findSong(id:number) {
+    const response = await connection.query(`
+        SELECT * FROM songs WHERE "id" = $1
+    `,[id])
+    return response.rows[0];
 }
