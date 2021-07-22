@@ -9,4 +9,9 @@ export async function createSong(name:string, link:string) {
     await songRepository.createSong(name, link);
 
     return true;
-}
+};
+
+export async function filterSongs(amount:number) {
+    const musics = await songRepository.getSongs(amount);
+    return musics;
+};

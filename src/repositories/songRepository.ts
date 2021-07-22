@@ -26,4 +26,14 @@ export async function deleteSong(id:number) {
     await connection.query(`
         DELETE FROM songs WHERE id = $1
     `, [id]);
+};
+
+export async function getSongs(amount:number) {
+    const musics = await connection.query(`
+        SELECT * FROM songs
+        ORDER BY score DESC
+        LIMIT $1
+    `, [amount])
+    
+    return musics.rows;
 }
