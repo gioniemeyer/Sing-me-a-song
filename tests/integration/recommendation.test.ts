@@ -30,3 +30,36 @@ describe("POST /recommendation", () => {
     expect(response.status).toBe(409);
   });
 });
+
+describe("GET /recommendations/top/:amount", () => {
+  it("Should return status 200 when there's musics on DB", async() => {
+    await supertest(app).post("/recommendations").send(Body);
+    const response = await supertest(app).get(`/recommendations/top/1`);
+    expect(response.status).toBe(200);
+  });
+
+  it("Should return an array with length <= amount from req.params", async() => {
+    await supertest(app).post("/recommendations").send(Body);
+    const response = await supertest(app).get(`/recommendations/top/1`);
+    expect(response.body).toEqual(
+      expect.arrayContaining([{
+        id: expect.any(Number),
+        name: expect.any(String),
+        youtubeLink: expect.any(String),
+        score: expect.any(Number)
+      }])
+    );
+    expect(response.body.length).toBe(1);
+  })
+
+  it("Should return 401 when there isn't musics on DB", async () => {
+    const response = await supertest(app).get("/recommendations/top/1");
+    expect(response.status).toBe(401);
+  });
+
+  it("Should return 404 when invalid amount", async () => {
+    const response = await supertest(app).get("/recommendations/top/-1");
+    expect(response.status).toBe(404);
+  })
+
+})

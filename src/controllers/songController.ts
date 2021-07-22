@@ -31,6 +31,8 @@ export async function getSong(req: Request, res: Response) {
         if(!amount || !(amount > 0)) return res.sendStatus(404);  
     
         const musics = await songService.filterSongs(amount);
+
+        if(musics.length === 0) return res.sendStatus(401);
     
         return res.status(200).send(musics);
     } catch(err) {
