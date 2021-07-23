@@ -21,4 +21,6 @@ app.get("/recommendations/top/:amount", songController.getSong);
 
 app.post("/genres", genreController.create);
 
+app.get("/genres", genreController.getGenres);
+
 export default app;

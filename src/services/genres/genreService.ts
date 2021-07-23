@@ -8,4 +8,11 @@ export async function checkGenre(name:string) {
     await genreRepository.create(name);
 
     return true;
+};
+
+export async function orderGenre() {
+    const genres = await genreRepository.getGenresByName();
+
+    if(genres.length === 0) return false;
+    return genres;
 }

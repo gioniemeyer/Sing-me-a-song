@@ -28,5 +28,24 @@ describe("POST /genres", () => {
         const response = await supertest(app).post("/genres").send({name: null});
         expect(response.status).toBe(403);    
     });
+});
 
+describe("GET /genres", () => {
+    it("Should return status 201 and an array of objects if exists genres in DB", async() => {
+        await supertest(app).post("/genres").send(body);
+        const response = await supertest(app).get("/genres");
+        expect(response.status).toBe(200)
+        console.log(response.body);
+        expect(response.body).toEqual(
+            expect.arrayContaining([{
+                id: expect.any(Number),
+                name: expect.any(String)
+            }])
+        )
+    });
+
+    it("Should return status 401 if there isn't genres in DB", async() => {
+        const response = await supertest(app).get("/genres");
+        expect(response.status).toBe(401);
+    })
 })

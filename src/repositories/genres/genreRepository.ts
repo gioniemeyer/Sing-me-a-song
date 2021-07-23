@@ -12,4 +12,11 @@ export async function create(name:string) {
     await connection.query(`
         INSERT INTO genres (name) VALUES ($1)    
     `, [name])
+};
+
+export async function getGenresByName() {
+    const genres = await connection.query(`
+        SELECT * FROM genres ORDER BY name ASC   
+    `);
+    return genres.rows;
 }
