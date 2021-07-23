@@ -14,19 +14,19 @@ export async function getRandom() {
         }
     });
 
-    if(topMusics.length === 0) {
-        return underMusics[0]
-    }
-
-    if(underMusics.length === 0) {
-        return topMusics[0]
-    }
-
     const choose = Math.random()
     if(choose <= 0.7) {
+        if(topMusics.length === 0) {
+            underMusics = underMusics.sort(() => Math.random() - 0.5);
+            return underMusics[0]
+        }
         topMusics = topMusics.sort(() => Math.random() - 0.5);
         return topMusics[0];
     } else {
+        if(underMusics.length === 0) {
+            topMusics = topMusics.sort(() => Math.random() - 0.5);
+            return topMusics[0]
+        }
         underMusics = underMusics.sort(() => Math.random() - 0.5);
         return underMusics[0];
     }
