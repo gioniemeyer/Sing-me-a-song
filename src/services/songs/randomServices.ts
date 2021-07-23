@@ -1,4 +1,4 @@
-import * as randomRepositories from "../repositories/randomRepositories"
+import * as randomRepositories from "../../repositories/songs/randomRepositories"
 
 export async function getRandom() {
     const scoreLimit = 10;

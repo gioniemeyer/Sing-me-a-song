@@ -1,4 +1,4 @@
-import * as songRepository from "../repositories/songRepository";
+import * as songRepository from "../../repositories/songs/songRepository";
 
 export async function createSong(name:string, link:string) {
 

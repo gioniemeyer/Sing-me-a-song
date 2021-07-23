@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import getYouTubeID from 'get-youtube-id';
-import * as songService from '../services/songService';
+import * as songService from '../../services/songs/songService';
 
 
 export async function postSong(req: Request, res: Response) {

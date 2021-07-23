@@ -1,10 +1,9 @@
 import {Request, Response} from "express";
-import * as randomServices from "../services/randomServices"
+import * as randomServices from "../../services/songs/randomServices"
 
 export async function sendRecommendation(req: Request, res: Response) {
     try {
         const music = await randomServices.getRandom();
-        console.log(music);
 
         if(!music) return res.sendStatus(404);
     
@@ -12,5 +11,4 @@ export async function sendRecommendation(req: Request, res: Response) {
     } catch(err) {
         return res.status(500).send(err);
     }
-
 }

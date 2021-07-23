@@ -1,4 +1,4 @@
-import connection from '../database';
+import connection from '../../database';
 
 export async function checkSong(link:string) {
     const response = await connection.query(`

@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
-import * as songService from '../services/songService';
-import * as voteService from '../services/voteService';
+import * as voteService from '../../services/songs/voteService';
 
 export async function upVote(req: Request, res: Response) {
     try {

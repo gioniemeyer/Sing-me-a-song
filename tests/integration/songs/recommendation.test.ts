@@ -1,6 +1,6 @@
 import supertest from "supertest";
-import app from "../../src/app";
-import connection from "../../src/database";
+import app from "../../../src/app";
+import connection from "../../../src/database";
 
 import {Body} from "./bodies" 
 import {WrongBody} from "./bodies" 

@@ -1,5 +1,5 @@
-import * as songRepository from "../repositories/songRepository";
-import * as voteRepository from "../repositories/voteRepository"
+import * as songRepository from "../../repositories/songs/songRepository";
+import * as voteRepository from "../../repositories/songs/voteRepository"
 
 export async function upgradeScore(id:number) {
     const music = await songRepository.findSong(id);

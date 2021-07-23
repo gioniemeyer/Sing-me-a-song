@@ -1,4 +1,4 @@
-import connection from "../database";
+import connection from "../../database";
 
 export async function upVote(id:number, score:number) {
     await connection.query(`
