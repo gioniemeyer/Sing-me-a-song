@@ -35,7 +35,6 @@ describe("GET /genres", () => {
         await supertest(app).post("/genres").send(body);
         const response = await supertest(app).get("/genres");
         expect(response.status).toBe(200)
-        console.log(response.body);
         expect(response.body).toEqual(
             expect.arrayContaining([{
                 id: expect.any(Number),
