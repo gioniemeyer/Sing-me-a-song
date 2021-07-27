@@ -2,10 +2,13 @@ import {Request, Response} from 'express';
 import getYouTubeID from 'get-youtube-id';
 import * as songService from '../../services/songs/songService';
 
-
+interface songBody {
+    name: string;
+    link: string;
+}
 export async function postSong(req: Request, res: Response) {
     try {
-        const { name, link } = req.body;
+        const { name, link }:songBody = req.body;
        
         if(!name || !getYouTubeID(link)) {
             return res.sendStatus(403);

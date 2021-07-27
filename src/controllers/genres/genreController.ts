@@ -1,9 +1,13 @@
 import {Request, Response} from "express";
 import * as genreService from "../../services/genres/genreService";
 
+interface genreBody {
+    name: string;
+}
+
 export async function create(req:Request, res: Response) {
     try {
-        const {name} = req.body
+        const { name }:genreBody = req.body;
 
         if(!name) return res.sendStatus(403);
         
