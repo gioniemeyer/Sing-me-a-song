@@ -1,10 +1,11 @@
 import * as randomRepositories from "../../repositories/songs/randomRepositories"
+import { Song } from "../../repositories/songs/interfaces";
 
 export async function getRandom() {
     const scoreLimit = 10;
-    const musics:any[] = await randomRepositories.getSongs();
-    let topMusics:any[] = [];
-    let underMusics:any[] = [];
+    const musics:Song[] = await randomRepositories.getSongs();
+    let topMusics:Song[] = [];
+    let underMusics:Song[] = [];
 
     musics.map(music => {
         if(music.score > scoreLimit) {
@@ -16,18 +17,8 @@ export async function getRandom() {
 
     const choose = Math.random()
     if(choose <= 0.7) {
-        if(topMusics.length === 0) {
-            underMusics = underMusics.sort(() => Math.random() - 0.5);
-            return underMusics[0]
-        }
-        topMusics = topMusics.sort(() => Math.random() - 0.5);
-        return topMusics[0];
+        return underMusics[0] || topMusics[0];
     } else {
-        if(underMusics.length === 0) {
-            topMusics = topMusics.sort(() => Math.random() - 0.5);
-            return topMusics[0]
-        }
-        underMusics = underMusics.sort(() => Math.random() - 0.5);
-        return underMusics[0];
+        return topMusics[0] || underMusics[0];
     }
 }

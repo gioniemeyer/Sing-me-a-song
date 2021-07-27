@@ -6,9 +6,7 @@ export async function upgradeScore(id:number) {
 
     if(!music) return false;
 
-    const score:number = music.score;
-
-    await voteRepository.upVote(id, score);
+    await voteRepository.upVote(id);
 
     return true;
 }
@@ -18,12 +16,12 @@ export async function downgradeScore(id:number) {
 
     if(!music) return false;
 
-    const score:number = music.score;
+    const score = music.score;
 
     if(score === -5) {
         await songRepository.deleteSong(id);
     } else {
-        await voteRepository.downVote(id, score);
+        await voteRepository.downVote(id);
     }
 
     return true;

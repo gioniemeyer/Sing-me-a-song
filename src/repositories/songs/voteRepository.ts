@@ -1,17 +1,17 @@
 import connection from "../../database";
 
-export async function upVote(id:number, score:number) {
+export async function upVote(id:number) {
     await connection.query(`
         UPDATE songs
-        SET score = $1
-        WHERE id = $2
-    `, [score + 1, id])
+        SET score = score + 1
+        WHERE id = $1
+    `, [id])
 };
 
-export async function downVote(id:number, score:number) {
+export async function downVote(id:number) {
     await connection.query(`
         UPDATE songs
-        SET score = $1
-        WHERE id = $2
-    `, [score - 1, id])
+        SET score = score - 1
+        WHERE id = $1
+    `, [id])
 }

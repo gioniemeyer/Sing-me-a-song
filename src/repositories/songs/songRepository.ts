@@ -1,6 +1,8 @@
 import connection from '../../database';
+import { Song } from "../../repositories/songs/interfaces";
 
-export async function checkSong(link:string) {
+
+export async function checkSong(link:string): Promise<Song[]> {
     const response = await connection.query(`
         SELECT * FROM songs WHERE "youtubeLink" = $1
     `,[link])
@@ -14,7 +16,7 @@ export async function createSong(name:string, link:string) {
     `, [name, link]);   
 }
 
-export async function findSong(id:number) {
+export async function findSong(id:number): Promise<Song> {
     const response = await connection.query(`
         SELECT * FROM songs WHERE "id" = $1
     `,[id])
@@ -28,7 +30,7 @@ export async function deleteSong(id:number) {
     `, [id]);
 };
 
-export async function getSongs(amount:number) {
+export async function getSongs(amount:number): Promise<Song[]> {
     const musics = await connection.query(`
         SELECT * FROM songs
         ORDER BY score DESC
