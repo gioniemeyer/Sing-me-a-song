@@ -1,30 +1,31 @@
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as songRepository from "../../repositories/songs/songRepository";
-import * as voteRepository from "../../repositories/songs/voteRepository"
+import * as voteRepository from "../../repositories/songs/voteRepository";
 
 export async function upgradeScore(id:number) {
-    const music = await songRepository.findSong(id);
+	const music = await songRepository.findSong(id);
 
-    if(!music) return false;
+	if(!music) return false;
 
-    const score:number = music.score;
+	const score:number = music.score;
 
-    await voteRepository.upVote(id, score);
+	await voteRepository.upVote(id, score);
 
-    return true;
+	return true;
 }
 
 export async function downgradeScore(id:number) {
-    const music = await songRepository.findSong(id);
+	const music = await songRepository.findSong(id);
 
-    if(!music) return false;
+	if(!music) return false;
 
-    const score:number = music.score;
+	const score:number = music.score;
 
-    if(score === -5) {
-        await songRepository.deleteSong(id);
-    } else {
-        await voteRepository.downVote(id, score);
-    }
+	if(score === -5) {
+		await songRepository.deleteSong(id);
+	} else {
+		await voteRepository.downVote(id, score);
+	}
 
-    return true;
+	return true;
 }

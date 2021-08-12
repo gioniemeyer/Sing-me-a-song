@@ -1,18 +1,19 @@
-import * as genreRepository from "../../repositories/genres/genreRepository"
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import * as genreRepository from "../../repositories/genres/genreRepository";
 
 export async function checkGenre(name:string) {
-    const invalidGenre = await genreRepository.checkGenre(name);
+	const invalidGenre = await genreRepository.checkGenre(name);
 
-    if(invalidGenre) return false;
+	if(invalidGenre) return false;
 
-    await genreRepository.create(name);
+	await genreRepository.create(name);
 
-    return true;
-};
+	return true;
+}
 
 export async function orderGenre() {
-    const genres = await genreRepository.getGenresByName();
+	const genres = await genreRepository.getGenresByName();
 
-    if(genres.length === 0) return false;
-    return genres;
+	if(genres.length === 0) return false;
+	return genres;
 }

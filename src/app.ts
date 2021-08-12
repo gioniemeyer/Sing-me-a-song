@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
-import * as songController from "./controllers/songs/songController"
+import * as songController from "./controllers/songs/songController";
 import * as voteController from "./controllers/songs/voteController";
 import * as randomController from "./controllers/songs/randomController";
-import * as genreController from "./controllers/genres/genreController"
+import * as genreController from "./controllers/genres/genreController";
 
 const app = express();
 app.use(cors());
