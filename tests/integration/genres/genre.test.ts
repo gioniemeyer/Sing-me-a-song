@@ -1,15 +1,16 @@
 import supertest from "supertest";
 import app from "../../../src/app";
 import connection from "../../../src/database";
+import { clearDatabase, endConnection } from "../../utils/database";
 
 const body = {name: "funk carioca"};
 
 beforeEach(async() => {
-	await connection.query("DELETE FROM genres");
+	await clearDatabase();
 });
 
 afterAll(() => {
-	connection.end();
+	endConnection();
 });
 
 describe("POST /genres", () => {

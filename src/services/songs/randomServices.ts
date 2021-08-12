@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import SongInterface from "../../interfaces/SongInterface";
 import * as randomRepositories from "../../repositories/songs/randomRepositories";
 
 export async function getRandom() {
 	const scoreLimit = 10;
-	const musics:any[] = await randomRepositories.getSongs();
-	let topMusics:any[] = [];
-	let underMusics:any[] = [];
+	const musics:SongInterface[] = await randomRepositories.getSongs();
+	let topMusics:SongInterface[] = [];
+	let underMusics:SongInterface[] = [];
 
 	musics.map(music => {
 		if(music.score > scoreLimit) {

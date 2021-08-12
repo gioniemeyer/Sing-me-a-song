@@ -10,6 +10,7 @@ export async function sendRecommendation(req: Request, res: Response) {
     
 		return res.status(200).send(music);
 	} catch(err) {
+		console.log(err);
 		return res.status(500).send(err);
 	}
 }

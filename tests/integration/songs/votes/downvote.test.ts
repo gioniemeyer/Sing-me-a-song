@@ -3,16 +3,17 @@ import app from "../../../../src/app";
 import connection from "../../../../src/database";
 
 import {Body} from "../../../factories/bodies"; 
+import { clearDatabase, endConnection } from "../../../utils/database";
 
 beforeEach(async() => {
-	await connection.query("DELETE FROM songs");
+	await clearDatabase();
 });
 
 afterAll(() => {
-	connection.end();
+	endConnection();
 });
 
-describe("POST /recommendation/:id/upvote", () => {
+describe("POST /recommendation/:id/downvote", () => {
 	it("should return 201 when song is correctly downvoted", async () => {
 		await supertest(app).post("/recommendations").send(Body);
 		const music = await connection.query(`

@@ -15,6 +15,7 @@ export async function upVote(req: Request, res: Response) {
 		return res.sendStatus(201);
         
 	} catch(err) {
+		console.log(err);
 		return res.status(500).send(err);
 	}
 }
@@ -32,6 +33,7 @@ export async function downVote(req: Request, res: Response) {
 		return res.sendStatus(201);
         
 	} catch(err) {
+		console.log(err);
 		return res.status(500).send(err);
 	}
 }

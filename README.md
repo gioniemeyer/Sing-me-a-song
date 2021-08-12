@@ -33,4 +33,9 @@ npm i
 ```bash
 npm run dev
 ```
-4. Use some type of Collaboration API Plataform (like Postman) to GET / POST the app routes. 
+4. Use some type of Collaboration API Plataform (like Postman) to GET / POST the app routes.
+
+Bonus: If you wanna test it you can ! Run tests with
+```bash
+npm run test
+```

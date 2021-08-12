@@ -4,13 +4,14 @@ import connection from "../../../src/database";
 
 import {Body} from "../../factories/bodies"; 
 import {WrongBody} from "../../factories/bodies"; 
+import { clearDatabase, endConnection } from "../../utils/database";
 
 beforeEach(async () => {
-	await connection.query("DELETE FROM songs");
+	await clearDatabase();
 });
 
 afterAll(() => {
-	connection.end();
+	endConnection();
 });
 
 describe("POST /recommendation", () => {

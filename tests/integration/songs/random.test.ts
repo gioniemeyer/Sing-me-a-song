@@ -2,13 +2,14 @@ import app from "../../../src/app";
 import connection from "../../../src/database";
 import supertest from "supertest";
 import { Body } from "../../factories/bodies";
+import { clearDatabase, endConnection } from "../../utils/database";
 
 beforeEach(async() => {
-	await connection.query("DELETE FROM songs");
+	await clearDatabase();
 });
 
 afterAll(() => {
-	connection.end();
+	endConnection();
 });
 
 describe("GET /recommendations/random", () => {

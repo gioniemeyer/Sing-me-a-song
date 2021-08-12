@@ -21,6 +21,7 @@ export async function postSong(req: Request, res: Response) {
 		}
 
 	} catch(err) {
+		console.log(err);
 		return res.status(500).send(err);
 	}
 }
@@ -37,6 +38,7 @@ export async function getSong(req: Request, res: Response) {
     
 		return res.status(200).send(musics);
 	} catch(err) {
+		console.log(err);
 		return res.status(500).send(err);
 	}
 }
