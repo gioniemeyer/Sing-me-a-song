@@ -33,7 +33,9 @@ npm i
 ```bash
 npm run dev
 ```
-4. Use some type of Collaboration API Plataform (like Postman) to GET / POST the app routes.
+4. Create an .env file based on env.example
+5. The files needed to create development and test database used by the application are in the folder "utils", you can use dump.sql
+6. Use some type of Collaboration API Plataform (like Postman) to GET / POST the app routes.
 
 Bonus: If you wanna test it you can ! Run tests with
 ```bash
