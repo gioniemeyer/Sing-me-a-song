@@ -29,13 +29,17 @@ The following tools and frameworks were used in the construction of the project:
 ```bash
 npm i
 ```
-3. Run the back-end with
+3. Install dependencies
 ```bash
-npm run dev
+npm i
 ```
 4. Create an .env file based on env.example
 5. The files needed to create development and test database used by the application are in the folder "utils", you can use dump.sql
-6. Use some type of Collaboration API Plataform (like Postman) to GET / POST the app routes.
+6. Run the back-end with
+```bash
+npm run dev
+```
+7. Use some type of Collaboration API Plataform (like Postman) to GET / POST the app routes.
 
 Bonus: If you wanna test it you can ! Run tests with
 ```bash
